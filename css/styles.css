@@ -547,16 +547,13 @@ ul.small_thumb {
 	margin-left:20px;
 	padding-left:20px;/*background:url(../images/dot.gif) repeat-y left;*/
 }
-.contact_title {
-	color:#186c9b;
-	font-weight:bold;
-	float:left;
-	width:70px;
-}
+
 .contact_detail {
 	float:left;
-	width:100px;
+	width:150px;
 	clear:right;
+	font-family: Century Gothic, sans-serif;
+
 }
 .forms {
 	border:#c8cdd2 1px solid !important; /*the important gets rid of the yellow google toolbar field style*/
