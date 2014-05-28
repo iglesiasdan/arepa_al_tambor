@@ -133,7 +133,7 @@ a:hover {
 #main_menu {
 	width:706px;
 	height:53px;
-	background:url(../images/menu_box.gif) no-repeat bottom left;
+	background:url(../images/menu_box.png) no-repeat bottom left;
 	float:left;
 }
 #main_menu ul {
