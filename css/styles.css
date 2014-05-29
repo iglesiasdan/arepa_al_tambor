@@ -51,10 +51,10 @@ a:hover {
 	width:980px;/*clear:both;*/
 }
 #logo_birds {
-	width:170px; /*change this width to make the banner the birds are holding wider*/
+	width:195px; /*change this width to make the banner the birds are holding wider*/
 	height:100px;
 	float:left;
-	background:url(../images/logo_bg_tile.png) repeat-x top;
+	/*background:url(../images/logo_bg_tile.png) repeat-x top;*/
 	background-size: 15px 90px;
 	margin-top:5px;
 }
@@ -62,14 +62,14 @@ a:hover {
 	width:75px;
 	height:110px;
 	float:left;
-	background:url(../images/logo_bg_left.jpg) repeat-x top;
+	/*background:url(../images/logo_bg_left.jpg) repeat-x top;*/
 	background-size: 75px 90px;
 }
 #logo_birds .right {
 	width:75px;
 	height:110px;
 	float:right;
-	background:url(../images/logo_bg_right.jpg) repeat-x top;
+	/*background:url(../images/logo_bg_right.jpg) repeat-x top;*/
 	background-size: 75px 90px;
 }
 #logo_container {
@@ -78,8 +78,6 @@ a:hover {
 #logo {
 	width:150px; /*change this width and height to match your logo image*/
 	height:68px;
-	margin-top: 15px;
-	margin-left: 15px;
 	position:absolute;
 }
 #search_blimp {
@@ -131,10 +129,11 @@ a:hover {
 	margin:0 0 15px 0;
 }
 #main_menu {
-	width:600x;
+	width:600px;
 	height:53px;
 	background:url(../images/menu_box.png) no-repeat bottom left;
 	float:left;
+	margin-top: 15px
 }
 #main_menu ul {
 	margin:16px 0 0 20px; /*padding on the top, right, bottom, left*/
