@@ -5,6 +5,7 @@
 <title>Arepa al Tambor</title>
 <link href="css/styles.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/jquery.js"></script>
+<script src="js/jquery-1.10.1.min.js"></script>
 <script type="text/javascript">
 
 var html5_audiotypes={ 
@@ -13,7 +14,11 @@ var html5_audiotypes={
 	"ogg": "audio/ogg",
 	"wav": "audio/wav"
 }
+var clicksound=createsoundbite("sonidos/click.ogg", "sonidos/click-afuera.mp3")
+var clicksound2=createsoundbite("sonidos/click2.ogg", "sonidos/click-medio.mp3")
+var clicksound3=createsoundbite("sonidos/click2.ogg", "sonidos/click-centro.mp3")
 
+//////////////////////////////////////////////////////////
 function createsoundbite(sound){
 	var html5audio=document.createElement('audio')
 	if (html5audio.canPlayType){ //check support for HTML5 audio
@@ -36,45 +41,7 @@ function createsoundbite(sound){
 		return {playclip:function(){throw new Error("Your browser doesn't support HTML5 audio unfortunately")}}
 	}
 }
-
-var clicksound=createsoundbite("sonidos/click.ogg", "sonidos/click-afuera.mp3")
-var clicksound2=createsoundbite("sonidos/click2.ogg", "sonidos/click-medio.mp3")
-
-function coordenadas(event) {
- x=event.clientX + document.body.scrollLeft;
- y=event.clientY + document.body.scrollTop;
- contador=0
- a=500;
- b=450;
- r1=80;
- r2=160;
- r3=225;
- circulo=((x*x)+(y*y)-(2*a*x)-(2*b*y)+(a*a)+(b*b));
-R1=r1*r1;
-R2=r2*r2; 
-R3=r3*r3;
-
-
- if(circulo<R1)//sonido 1
- {
-	clicksound.playclip();
-	clicksound2.pause();
-  contador++;
- }
- else if(circulo<R2 && circulo>R1)//sonido 2
- {
-	clicksound2.playclip();
-	clicksound.pause();
-  contador++;
- }
-  else if(circulo>R2 && circulo>R1 && circulo<R3)//sonido 3
- {
-	clicksound.pause();
-	clicksound2.pause();
-  contador++;
- }
-}
-
+/////////////////////////////////////////////////////////////
 function tecla (e)  {      
 
 	var evt = e ? e : event; 
@@ -84,25 +51,76 @@ function tecla (e)  {
 	if(key==65 || key==97){
 	clicksound.playclip();
 	clicksound2.pause();
+  clicksound3.pause();
 	}  
 	else if(key==83 | key==115){
 	clicksound2.playclip();
 	clicksound.pause();
+  clicksound3.pause();
 	}  
 	else if(key==68 | key==100){
+  clicksound3.playclip();
 	clicksound.pause();
 	clicksound2.pause();
 	} 
 }
 
-function lista_rep () {
+/////////////////////////////////
+$(document).ready(function(){
+  var contador=0;
+  var arreglo= new Array();
 
-}
+  $('#click').on("click",function(){
+    x=event.clientX + document.body.scrollLeft;
+    y=event.clientY + document.body.scrollTop;
 
+  a=500;
+  b=450;
+  r1=80;
+  r2=160;
+ r3=225;
+ circulo=((x*x)+(y*y)-(2*a*x)-(2*b*y)+(a*a)+(b*b));
+R1=r1*r1;
+R2=r2*r2; 
+R3=r3*r3;
+
+
+ if(circulo<R1)//sonido 1
+ {
+  clicksound.playclip();
+  clicksound2.pause();
+  clicksound3.pause();
+  arreglo[contador]="afuera";
+  contador++;
+ }
+ else if(circulo<R2 && circulo>R1)//sonido 2
+ {
+  clicksound2.playclip();
+  clicksound.pause();
+  clicksound3.pause();
+  arreglo[contador]="medio";
+  contador++;
+ }
+  else if(circulo>R2 && circulo>R1 && circulo<R3)//sonido 3
+ {
+  clicksound3.playclip();
+  clicksound.pause();
+  clicksound2.pause();
+  arreglo[contador]="centro";
+  contador++;
+ }
+
+    
+
+    console.log(arreglo);
+  });
+/////////////fin de la funcion de click////////////////
+});
+///////fin del document ready////////////
 </script>
 </head>
 
-<body onclick="coordenadas(event);" onkeypress="tecla(event);">
+<body  onkeypress="tecla(event);">
 <div id="background">
   <!-- tiling image of the blue gradient at the top -->
   <div id="centre">
@@ -140,11 +158,13 @@ function lista_rep () {
             <div id="content">
               <div id="product_full"> 			  
 				<center>
-				<img src="images/tambor.png" width="500" height="500" />                 
+				<div id="click"><img src="images/tambor.png" width="500" height="500" /></div>                 
 				</center>
               </div>
               <!--end product full-->
               <hr class="clear" />
+              <div class="modal-footer">
+              </div>
             </div>
             <!--end content-->
           </div>
